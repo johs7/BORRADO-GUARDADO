@@ -21,7 +21,7 @@ namespace EXAMENN
 
         List<ClaseCliente> Milista = new List<ClaseCliente>();
        
-        int posicion;
+        int posicion; /*Posicion*/
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -62,7 +62,7 @@ namespace EXAMENN
             {
                 return;
             }
-
+/*Esto no es del todo necesario pero para mi proyecto me lo exigian por instancias objetos y asi*/
             ClaseCliente MiCliente = new ClaseCliente();
             MiCliente.C_Nombre = TxbNomClteDgv1.Text;
             MiCliente.C_IdUsuario = (int.Parse(TxbIdClteDgv1.Text));
@@ -90,7 +90,7 @@ namespace EXAMENN
 
         }
 
-    
+    /*Aca es donde inicia lo bueno aca es donde tu haces que todos los datos sean guardados*/
 
         private void GrabarDatos()
         {
@@ -116,7 +116,7 @@ namespace EXAMENN
                 this.Close();
             }
         }
-
+/*Con este load creas un documento esto se hara automatico si lo haces bien*/
         private void FormCliente_Load(object sender, EventArgs e)
         {
            
@@ -181,6 +181,7 @@ namespace EXAMENN
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
+/*Esto borra de manera permanente los datos que tu selecciones en tu dgv,recuerda que tienes que utilizar la variable global posicion*/
         private void BtnEliminarClte_Click(object sender, EventArgs e)
         {
             DialogResult Respuesta = MessageBox.Show("¿BORRAR INFORMACIÓN DE MANERA PERMANENTE?",
